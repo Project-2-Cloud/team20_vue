@@ -61,7 +61,9 @@ export default {
   },
   methods: {
     addToCart(item, hours) {
-      console.log(hours)
+      if (!hours) {
+        return;
+      }
       this.$store.commit("addToCart", {
         "item": item,
         "hours": hours,
