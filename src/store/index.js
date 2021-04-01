@@ -55,15 +55,19 @@ export default new Vuex.Store({
            state.endpoints.login = process.env.VUE_APP_AUTH_URL;
            state.endpoints.teachers = process.env.VUE_APP_PRODUCTS_URL;
            url = state.endpoints.teachers;
-           console.log(process.env);
+
+           console.log(process.env, url);
        }
    },
    actions: { //asynchronous
      async getTeachers(state) {
+         console.log("entering function", url);
        const teachers = await fetch(url, { headers });
+       console.log("Fetching", teachers);
        const prods = await teachers.json();
+       console.log("PRODS", prods);
        state.commit("setTeachers", prods);
-       console.log(prods);
+       console.log("last",prods);
      }
    },
   modules: {

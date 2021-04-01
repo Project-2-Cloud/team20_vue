@@ -10,10 +10,6 @@ import NavHeader from "@/NavHeader.vue"
 export default {
   components: {
     NavHeader
-  },
-  mounted(){
-    this.$store.commit("setUrls");
-    this.$store.dispatch("getTeachers");
   }
 }
 </script>
