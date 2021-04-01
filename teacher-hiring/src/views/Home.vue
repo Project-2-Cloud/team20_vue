@@ -38,12 +38,46 @@
             <a class="badge-link" href="#"><img src="img/google-play-badge.svg" alt=""></a>
             <a class="badge-link" href="#"><img src="img/app-store-badge.svg" alt=""></a>
           </div>
+          <div>
+            <form>
+              <div>
+                <label for="name">Name : </label>
+                <input type="text" name="name" id="name" required>
+              </div>
+              <div>
+                <label for="firstname">Firstname : </label>
+                <input type="texte" name="firstname" id="firstname" required>
+              </div>
+              <div>
+                <label for="email">Email : </label>
+                <input type="email" name="email" id="email" required>
+              </div>
+              <div>
+                <label for="">Course : </label>
+                <input type="text" name="course" id="course" required>
+              </div>
+              <div>
+                <label for="">Age : </label>
+                <input type="number" name="age" id="age" required>
+              </div>
+              <div>
+                <label for="">Your price per hour : </label>
+                <input type="number" name="price" id="price" required>
+              </div>
+              <div>
+                <label for="">A short description of yourself : </label>
+                <input type="text" name="description" id="description">
+              </div>
+              <div>
+                <input type="submit" value="Register">
+              </div>
+            </form>
+            </div>
         </div>
       </div>
     </div>
   </section>
   </header>
-   
 </template>
 	
 // <script>
