@@ -4,7 +4,8 @@ import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex)
 
-const url = "http://localhost:8000/index";
+
+var url;
 const headers = { Accept: "application/json" };
 
 export default new Vuex.Store({
@@ -19,7 +20,8 @@ export default new Vuex.Store({
       idToken: ""
     },
     endpoints: {
-      login: "http://localhost:3000/login"
+      login: "http://localhost:3000/login",
+        teachers: "http://localhost:8000/teachers"
     },
    },
    getters: {
@@ -49,6 +51,12 @@ export default new Vuex.Store({
       state.user.email =payload.email;
       state.user.idToken =payload.idToken;
      },
+       setUrls(state) {
+           state.endpoints.login = process.env.VUE_APP_AUTH_URL;
+           state.endpoints.teachers = process.env.VUE_APP_PRODUCTS_URL;
+           url = state.endpoints.teachers;
+           console.log(process.env);
+       }
    },
    actions: { //asynchronous
      async getTeachers(state) {
