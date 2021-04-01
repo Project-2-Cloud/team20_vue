@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark" role="navigation">
     <div class="container">
-      <a class="navbar-brand" href="#">BESTUDY</a>
+      <a class="navbar-brand" href="/">BESTUDY</a>
       <button
         class="navbar-toggler"
         type="button"
