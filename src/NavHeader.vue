@@ -70,6 +70,10 @@ import ShoppingCart from "./TeacherHiring.vue";
 export default {
   components: { ShoppingCart },
   name: "NavHeader",
+  mounted(){
+    this.$store.commit("setUrls");
+    this.$store.dispatch("getTeachers");
+  },
   computed: {
     userEmail() {
       return this.isLoggedIn ? this.currentUser.email : "";

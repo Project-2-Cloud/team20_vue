@@ -13,7 +13,7 @@
           <li class="list-group-item">
             <p class="card-text">{{ item.description | shortDescription }}</p>
             <p class="card-text">
-              {{ item.courseSubjects | shortDescription }}
+              {{ item.courses.substring(1, item.courses.length - 1) | shortDescription }}
             </p>
             <p class="card-text">€{{ item.pricePerHour }}/h</p>
           </li>
@@ -86,8 +86,9 @@ export default {
       });
     },
     getCourses(item) {
-      console.log(item.courseSubjects.split(", "));
-      return item.courseSubjects.split(", ");
+      console.log(item.courses.split(", "));
+      var notSplitted = item.courses.substring(1, item.courses.length - 1);
+      return notSplitted.split(", ");
     },
   },
 };
