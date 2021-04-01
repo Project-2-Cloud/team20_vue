@@ -40,7 +40,7 @@
         </p>
         <a
           style="background-color: white; color: black"
-          href="#download"
+          href="/teachers"
           class="btn btn-outline btn-xl js-scroll-trigger"
           >view tutors</a
         >
