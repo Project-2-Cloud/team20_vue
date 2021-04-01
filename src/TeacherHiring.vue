@@ -19,9 +19,16 @@
                 <div class="modal-body">
                     <table class="table">
                         <tbody>
+                            <tr>
+                              <th>Teacher</th>
+                              <th>Course</th>
+                              <th>Total hours</th>
+                              <th>Price</th>
+                              <th></th>
+                            </tr>
                             <tr v-for="(itemObject,idx) in inCart" :key="idx">
                                 <td>{{ itemObject.item.firstName }} {{ itemObject.item.lastName }}</td>
-                                <td>{{itemObject.item.courseSubjects}}</td>
+                                <td>{{itemObject.course}}</td>
                                 <td>{{itemObject.hours}} hours</td>
                                 <td>${{itemObject.item.pricePerHour * itemObject.hours}}</td>
                                 <td>
@@ -29,6 +36,8 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th>Total</th>
+                                <th></th>
                                 <th></th>
                                 <th>€{{ total }}</th>
                                 <th></th>

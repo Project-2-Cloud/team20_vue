@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Teachers from '../views/Teachers.vue'
 import Login from '../Login.vue'
+import Profile from '../views/Profile.vue'
 
 Vue.use(VueRouter)
 
@@ -20,6 +21,11 @@ const routes = [
     path: '/teachers',
     name: 'Teachers',
     component: Teachers
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
   },
   
 ]

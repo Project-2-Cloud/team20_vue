@@ -6,35 +6,48 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
             <h5 class="card-title">{{ item.firstName }} {{ item.lastName }}</h5>
-            <h6 class="card-subtitle mb-4 text-muted">{{ item.age }} years old</h6>
+            <h6 class="card-subtitle mb-4 text-muted">
+              {{ item.age }} years old
+            </h6>
           </li>
           <li class="list-group-item">
             <p class="card-text">{{ item.description | shortDescription }}</p>
-            <p class="card-text">{{ item.courseSubjects | shortDescription }}</p>
+            <p class="card-text">
+              {{ item.courseSubjects | shortDescription }}
+            </p>
             <p class="card-text">€{{ item.pricePerHour }}/h</p>
           </li>
           <li class="list-group-item">
-             <div class="input-group">
-                <input
-                  type="number"
-                  class="form-control"
-                  placeholder="Hours to hire"
-                  id="hours"
-                  name="hours"
-                  min="1"
-                  max="100"
-                  v-model="hours"
-                />
-                <div class="input-group-append" id="button-hours">
-                  <button class="btn btn-secondary" type="button" :disabled="item.quantity === 0" @click="addToCart(item, hours)">
-                    Hire
-                  </button>
-                </div>
+            <select class="custom-select" v-model="course">
+              <option disabled value="">Choose a course</option>
+              <option v-for="(itemCourse, idx) in getCourses(item)" :key="idx">
+                {{itemCourse}}
+              </option>
+            </select>
+            <div class="input-group">
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Hours to hire"
+                id="hours"
+                name="hours"
+                min="1"
+                max="100"
+                v-model="hours"
+              />
+              <div class="input-group-append" id="button-hours">
+                <button
+                  class="btn btn-secondary"
+                  type="button"
+                  :disabled="item.quantity === 0"
+                  @click="addToCart(item)"
+                >
+                  Hire
+                </button>
               </div>
+            </div>
           </li>
         </ul>
-        
-       
       </div>
     </div>
   </div>
@@ -48,6 +61,7 @@ export default {
     return {
       size: "",
       hours: "",
+      course: "",
     };
   },
   filters: {
@@ -60,14 +74,20 @@ export default {
     },
   },
   methods: {
-    addToCart(item, hours) {
-      if (!hours) {
+    addToCart(item) {
+      if (!this.hours || !this.course) {
         return;
       }
+      console.log(this.course)
       this.$store.commit("addToCart", {
-        "item": item,
-        "hours": hours,
+        item: item,
+        hours: this.hours,
+        course: this.course,
       });
+    },
+    getCourses(item) {
+      console.log(item.courseSubjects.split(", "));
+      return item.courseSubjects.split(", ");
     },
   },
 };
@@ -78,8 +98,12 @@ export default {
   color: #d17581;
 } */
 
-.card-text{
-  font-family: Catamaran,Helvetica,Arial,sans-serif;
+.card-text {
+  font-family: Catamaran, Helvetica, Arial, sans-serif;
+}
+
+.custom-select {
+  margin-bottom: 1rem;
 }
 
 .grow {
@@ -90,7 +114,7 @@ export default {
 }
 
 .btn {
-  border-radius: 0 .25rem .25rem 0 !important;
+  border-radius: 0 0.25rem 0.25rem 0 !important;
 }
 
 /* .hours {
